@@ -1,6 +1,7 @@
 <template lang="pug">
   main
-    pm-notification(v-show="showNotification" :tracks="tracks")
+    transition(name="move", mode="out-in")
+      pm-notification(v-show="showNotification" :tracks="tracks")
     pm-loader(v-show="isLoading")
     section.section(v-show="!isLoading")
       nav.navbar
@@ -17,15 +18,15 @@
             small {{ searchMessage }}
       |
       .container
-        .columns.is-multiline
-          .column.is-one-quarter(v-for="t in tracks")
+        transition-group.columns.is-multiline(tag="div" name="fade" mode="out-in")
+          .column.is-one-quarter(v-for="t in tracks" :key="t.id")
             // el | pipe para que funcione
             pm-track(
               v-setBlur="t.preview_url"
               :class="{'is-active' : t.id === selectedTrack}"
               :track="t",
               @select="setSelectedTrack"
-            )
+              )
 </template>
 
 <script>

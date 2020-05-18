@@ -24,29 +24,15 @@
 </template>
 
 <script>
-import { bus } from "@/plugins/event-bus.js";
+import trackMixins from "@/mixins/track";
+
 export default {
+  mixins: [trackMixins],
   props: {
     track: {
       type: Object,
       required: true
     }
-  },
-  methods: {
-    selectTrack() {
-      if (!this.track.preview_url) {
-        return;
-      }
-      this.$emit("select", this.track.id);
-
-      bus.$emit("set-track", this.track);
-    }
-    // goToTrack(id) {
-    //   this.$router.push({
-    //     name: "track",
-    //     params: { id },
-    //   });
-    // },
   }
 };
 </script>
