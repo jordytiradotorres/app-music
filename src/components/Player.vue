@@ -10,19 +10,24 @@
 </template>
 
 <script>
-import { bus } from "@/plugins/event-bus.js";
+// import { bus } from "@/plugins/event-bus.js";
+import { mapState } from "vuex";
+
 export default {
-  data() {
-    return {
-      track: {}
-    };
+  // data() {
+  //   return {
+  //     track: {},
+  //   };
+  // },
+  // created() {
+  //   bus.$on("set-track", (track) => {
+  //     console.log(track);
+  //     this.track = track;
+  //   });
+  // },
+  computed: {
+    ...mapState(["track"]),
   },
-  created() {
-    bus.$on("set-track", track => {
-      console.log(track);
-      this.track = track;
-    });
-  }
 };
 </script>
 

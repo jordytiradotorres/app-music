@@ -28,11 +28,12 @@ import trackMixins from "@/mixins/track";
 
 export default {
   mixins: [trackMixins],
+
   props: {
     track: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
